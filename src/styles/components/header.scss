@@ -1,7 +1,8 @@
-.banner {
+.header {
   text-align: center;
   background-color: $color-secondary;
   padding: 32px;
+  border-radius: 4px;
 
   &__title {
     font-size: 40px;
