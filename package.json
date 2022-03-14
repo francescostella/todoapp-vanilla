@@ -2,9 +2,9 @@
   "name": "todoapp-vanilla",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "start": "parcel src/index.html",
+    "start": "parcel src/index.html --open safari",
+    "dev": "parcel serve src/index.html --open safari",
     "build": "parcel build src/index.html"
   },
   "repository": {

@@ -1,1 +1,3 @@
-console.log('App loaded!!!');
+(function() {
+  console.log('HEY!');
+})()

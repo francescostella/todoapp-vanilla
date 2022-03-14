@@ -1,8 +1,11 @@
 @import './settings/variables.scss';
-
+@import './components/banner.scss';
+@import './components/list.scss';
 
 body {
   font-family: sans-serif;
   background-color: $color-white;
   color: $color-black;
+  font-size: 16px;
+  line-height: 1.5;
 }

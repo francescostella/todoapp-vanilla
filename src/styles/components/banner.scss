@@ -1,0 +1,18 @@
+.banner {
+  text-align: center;
+  background-color: $color-secondary;
+  padding: 32px;
+
+  &__title {
+    font-size: 40px;
+    margin: 0;
+    margin-bottom: 8px;
+  }
+
+  &__subtitle {
+    font-size: 24px;
+    margin: 0;
+    margin-bottom: 8px;
+    font-weight: 300;
+  }
+}
