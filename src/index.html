@@ -8,26 +8,32 @@
   <link rel="stylesheet" href="styles/main.scss">
 </head>
 <body>
-  <header class="banner">
-    <h1 class="banner__title">todos</h1>
-    <p class="banner__subtitle">Todo App (Vanilla)!!<p>
-  </header>
+  <div class="container">
+    <header class="header">
+      <h1 class="header__title">TodoApp</h1>
+      <p class="header__subtitle">Application written in vanilla Javascript<p>
+    </header>
+    
+    <div class="add-form">
+      <input class="add-form__input" type="text">
+      <button class="add-form__button">Add</button>
+    </div>
   
-  <div class="insert">
-    <input class="insert__input" type="text">
-    <button class="insert__add">Add Todo</button>
+    <ul class="list">
+      <li class="list__item">
+        <label class="list__label">
+          <input class="list__checkbox" type="checkbox">
+          <span class="list__description">Walk the dog</span>
+        </label>
+        <button class="list__delete">❌</button>
+      </li>
+    </ul>
   </div>
 
-  <ul class="list">
-    <li class="list__item">
-      <label class="list__label">
-        <input class="list__checkbox" type="checkbox">
-        <span class="list__description">Walk the dog</span>
-      </label>
-      <button class="list__delete">❌</button>
-    </li>
-  </ul>
+  <footer class="footer">
+    <p>Implemented by <b>Francesco Stella</b></p>
+  </footer>
 
-  <script src="js/app.js"></script>
+  <script type="module" src="js/entry.js"></script>
 </body>
 </html>
