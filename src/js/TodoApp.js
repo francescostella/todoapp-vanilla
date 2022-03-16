@@ -6,7 +6,7 @@ export default class TodoApp {
     this.todoService = new TodoService();
     this.$todoList = document.querySelector('.list');
     this.$newTodoInput = document.querySelector('.add-form__input');
-    this.$addButton = document.querySelector('.add-form__button');
+    this.$addForm = document.querySelector('.add-form');
 
     this.renderTodos();
     this.bind();
@@ -17,7 +17,9 @@ export default class TodoApp {
   }
 
   bind() {
-    this.$addButton.addEventListener('click', event => {
+    this.$addForm.addEventListener('submit', event => {
+      event.preventDefault();
+      
       const newValue = this.$newTodoInput.value;
 
       if (newValue) {
