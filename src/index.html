@@ -15,8 +15,8 @@
     </header>
     
     <div class="add-form">
-      <input class="add-form__input" type="text">
-      <button class="add-form__button">Add</button>
+      <input class="add-form__input" type="text" autofocus placeholder="What is it next?">
+      <button class="add-form__button" type="submit">Add</button>
     </div>
   
     <ul class="list">
@@ -33,6 +33,16 @@
   <footer class="footer">
     <p>Implemented by <b>Francesco Stella</b></p>
   </footer>
+
+  <template id="template--todo-item">
+    <li class="list__item">
+      <label class="list__label">
+        <input class="list__checkbox" type="checkbox">
+        <span class="list__description">${todo.value}</span>
+      </label>
+      <button class="list__delete">❌</button>
+    </li>
+  </template>
 
   <script type="module" src="js/entry.js"></script>
 </body>
