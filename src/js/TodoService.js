@@ -1,17 +1,22 @@
+import Todo from './Todo';
+
+let _lastId = 0;
+
+function generateTodoID() {
+  return _lastId += 1;
+}
 export default class TodoService {
   constructor() {
     this.todos = [];
   }
 
   add(value) {
-    this.todos.push({
-      value,
-      completed: false
-    });
+    let newTodo = new Todo(generateTodoID(), value)
+    this.todos.push(newTodo);
   }
 
-  delete(item) {
-    this.todos = this.todos.filter(todo => todo !== item);
+  delete(id) {
+    this.todos = this.todos.filter(todo => !todo.is(id));
   }
 
   clearCompleted() {
