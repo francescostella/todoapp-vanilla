@@ -16,11 +16,22 @@ export default class TodoService {
   }
 
   delete(id) {
-    this.todos = this.todos.filter(todo => todo.id !== id);
+    let todoToRemove;
+
+    this.todos = this.todos.filter(todo => {
+      if (todo.id !== parseInt(id)) {
+        todoToRemove = todo;
+        return true;
+      }
+
+      return false;
+    });
+
+    return todoToRemove;
   }
 
   getTodoByID(id) {
-    return this.todos.find(todo => todo.id === id);
+    return this.todos.find(todo => todo.id === parseInt(id));
   }
 
   clearCompleted() {

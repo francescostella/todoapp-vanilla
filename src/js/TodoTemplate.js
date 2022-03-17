@@ -10,7 +10,7 @@ export default function TodoTemplate(todo) {
   }
 
   $todoItem.querySelector('.list__description').textContent = todo.value;
-  $todoItem.querySelector('.list__label').setAttribute('data-todo-id', todo.id);
+  $todoItem.querySelector('.list__item').setAttribute('data-todo-id', todo.id);
 
   return $todoItem;
 }

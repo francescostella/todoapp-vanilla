@@ -30,10 +30,18 @@ export default class TodoApp {
     });
 
     this.$todoList.addEventListener('click', event => {
+      const selectedID = event.target.closest('.list__item').getAttribute('data-todo-id');
+      const todo = this.todoService.getTodoByID(selectedID);
+
+      // Toggle completed state on each Todo
       if (event.target.matches('.list__checkbox')) {
-        const selectedID = event.target.parentNode.getAttribute('data-todo-id');
-        const todo = this.todoService.getTodoByID(parseInt(selectedID));
         todo.toggleCompleted();
+        this.renderTodos();
+      }
+
+      // Delete Todos
+      if (event.target.matches('.list__delete')) {
+        this.todoService.delete(selectedID);
         this.renderTodos();
       }
     });
