@@ -15,18 +15,12 @@
     </header>
     
     <form class="add-form">
-      <input class="add-form__input" type="text" autofocus placeholder="What is it next?">
+      <input class="add-form__input" type="text" autofocus placeholder="What's it next?">
       <button class="add-form__button" type="submit">Add</button>
     </form>
   
     <ul class="list">
-      <li class="list__item">
-        <label class="list__label">
-          <input class="list__checkbox" type="checkbox">
-          <span class="list__description">Walk the dog</span>
-        </label>
-        <button class="list__delete">❌</button>
-      </li>
+      <!-- Todos will be rendered here -->  
     </ul>
   </div>
 
@@ -35,9 +29,10 @@
   </footer>
 
   <template id="template--todo-item">
-    <li class="list__item">
+    <li class="list__item" data-todo-id="${todo.id}">
       <label class="list__label">
         <input class="list__checkbox" type="checkbox">
+        <span class="list__checkmark"></span>
         <span class="list__description">${todo.value}</span>
       </label>
       <button class="list__delete">❌</button>
