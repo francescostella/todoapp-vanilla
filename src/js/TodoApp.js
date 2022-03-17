@@ -32,7 +32,9 @@ export default class TodoApp {
     this.$todoList.addEventListener('click', event => {
       if (event.target.matches('.list__checkbox')) {
         const selectedID = event.target.parentNode.getAttribute('data-todo-id');
-        console.log(`🚀 ~ TodoApp ~ renderTodos ~ selectedID`, selectedID)
+        const todo = this.todoService.getTodoByID(parseInt(selectedID));
+        todo.toggleCompleted();
+        this.renderTodos();
       }
     });
   }

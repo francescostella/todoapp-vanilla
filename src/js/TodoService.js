@@ -16,7 +16,11 @@ export default class TodoService {
   }
 
   delete(id) {
-    this.todos = this.todos.filter(todo => !todo.is(id));
+    this.todos = this.todos.filter(todo => todo.id !== id);
+  }
+
+  getTodoByID(id) {
+    return this.todos.find(todo => todo.id === id);
   }
 
   clearCompleted() {

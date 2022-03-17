@@ -5,12 +5,14 @@ export default class Todo {
     this.completed = false;
   }
 
-  toggleState() {
+  toggleCompleted() {
     this.completed = !this.completed;
   }
 
-  is(id) {
-    return this.id === id;
+  setCompleted(value) {
+    if (typeof value === 'boolean') {
+      this.completed = value;
+    }
   }
 
   setValue(value) {

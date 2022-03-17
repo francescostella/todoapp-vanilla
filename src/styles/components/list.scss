@@ -18,6 +18,10 @@
       background-color: #eee;
     }
 
+    &--completed {
+      color: $color-muted;
+    }
+
     .list__checkbox:checked ~ .list__checkmark {
       border-color: #2196F3;
       background-color: #2196F3;
@@ -34,6 +38,10 @@
     width: 100%;
     padding: 8px 0;
     cursor: pointer;
+
+    .list__item--completed & {
+      text-decoration: line-through;
+    }
   }
 
   &__checkbox {
