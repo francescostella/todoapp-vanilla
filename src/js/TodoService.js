@@ -44,16 +44,19 @@ export default class TodoService {
 
   getCountTodos() {
     const todos = {
+      active: 0,
+      completed: 0,
       total: 0,
-      completed: 0
     };
 
     this.todos.forEach(todo => {
       if (todo.completed) {
-        todos.completed++
+        todos.completed++;
+      } else {
+        todos.active++;
       }
 
-      todo.total++
+      todo.total++;
     });
 
     return todos;

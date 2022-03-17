@@ -10,9 +10,10 @@ export default class TodoApp {
     this.$todoList = document.querySelector('.list');
     this.$newTodoInput = document.querySelector('.add-form__input');
     this.$addForm = document.querySelector('.add-form');
+    this.$infoLeft = document.querySelector('.info__left');
 
     // Initialization sequence
-    this.renderTodos();
+    this.render();
     this.bind();
   }
 
@@ -24,27 +25,39 @@ export default class TodoApp {
 
       if (newValue) {
         this.todoService.add(this.$newTodoInput.value);
-        this.renderTodos();
+        this.render();
         this.$newTodoInput.value = '';
       }
     });
 
     this.$todoList.addEventListener('click', event => {
+      if (
+        !event.target.matches('.list__checkbox') &&
+        !event.target.matches('.list__delete')
+      ) {
+        return false;
+      }
+
       const selectedID = event.target.closest('.list__item').getAttribute('data-todo-id');
       const todo = this.todoService.getTodoByID(selectedID);
 
       // Toggle completed state on each Todo
       if (event.target.matches('.list__checkbox')) {
         todo.toggleCompleted();
-        this.renderTodos();
+        this.render();
       }
 
       // Delete Todos
       if (event.target.matches('.list__delete')) {
         this.todoService.delete(selectedID);
-        this.renderTodos();
+        this.render();
       }
     });
+  }
+
+  render() {
+    this.renderTodos();
+    this.renderInfo();
   }
 
   renderTodos() {
@@ -58,5 +71,10 @@ export default class TodoApp {
     this.todoService.todos.forEach(todo => {
       this.$todoList.appendChild(TodoTemplate(todo));
     });
+  }
+
+  renderInfo() {
+    const activeTodos = this.todoService.getCountTodos().active;
+    this.$infoLeft.textContent = `${activeTodos} left${activeTodos > 1 ? `s` : ``}`; 
   }
 }
