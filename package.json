@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "parcel src/index.html --open safari",
-    "dev": "parcel serve src/index.html --open safari",
+    "start": "parcel src/index.html --open chrome",
+    "dev": "parcel serve src/index.html --open chrome",
     "build": "parcel build src/index.html"
   },
   "repository": {
