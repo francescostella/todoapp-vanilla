@@ -10,6 +10,7 @@ export default class TodoApp {
     this.$todoList = document.querySelector('.list');
     this.$newTodoInput = document.querySelector('.add-form__input');
     this.$addForm = document.querySelector('.add-form');
+    this.$buttonClear = document.querySelector('.add-form__button--clear');
     this.$infoLeft = document.querySelector('.info__left');
 
     // Dev
@@ -44,6 +45,12 @@ export default class TodoApp {
         this.render();
         this.$newTodoInput.value = '';
       }
+    });
+
+    // Bind `click` for the Clear Completed button
+    this.$buttonClear.addEventListener('click', event => {
+      this.todoService.clearCompleted();
+      this.render();
     });
 
     // Bind `focus` and `blur` events for each

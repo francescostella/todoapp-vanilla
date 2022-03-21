@@ -30,8 +30,30 @@
   &__button {
     font-size: 16px;
     border: none;
-    background-color: #0d6efd;
-    color: $color-white;
     padding: 8px 16px;
+    cursor: pointer;
+    
+    &--add {
+      background-color: #0d6efd;
+      color: $color-white;
+
+      &:hover {
+        background-color: darken(#0d6efd, 10%);
+      }
+    }
+
+    &--clear {
+      border: 1px solid Gray;
+      border-left-width: 0;
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px;
+      background-color: $color-white;
+      color: gray;
+
+      &:hover {
+        color: $color-white;
+        background-color: slategray;
+      }
+    }
   }
 }
