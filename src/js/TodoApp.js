@@ -53,7 +53,7 @@ export default class TodoApp {
         return false;
       }
       // Set input text field background color
-      event.target.style.background = 'aliceblue';
+      event.target.style.background = 'ivory';
     }, true);
 
     document.addEventListener('blur', event => {
