@@ -62,7 +62,7 @@ export default class TodoApp {
 
   renderTodos() {
     if (this.todoService.isEmpty()) {
-      this.$todoList.innerHTML = '<p>No todos.</p>';
+      this.$todoList.innerHTML = '<p class="list__empty">No todos.</p>';
       return;
     }
 

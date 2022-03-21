@@ -3,6 +3,11 @@
   margin: 0;
   padding: 16px;
 
+  &__empty {
+    color: $color-grey;
+    text-align: center;
+  }
+
   &__item {
     display: flex;
     align-items: center;
