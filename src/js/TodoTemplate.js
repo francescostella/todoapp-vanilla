@@ -9,7 +9,8 @@ export default function TodoTemplate(todo) {
     $todoItem.querySelector('.list__checkbox').removeAttribute('checked')
   }
 
-  $todoItem.querySelector('.list__description').textContent = todo.value;
+  $todoItem.querySelector('.list__description--view').textContent = todo.value;
+  $todoItem.querySelector('.list__description--edit').value = todo.value;
   $todoItem.querySelector('.list__item').setAttribute('data-todo-id', todo.id);
 
   return $todoItem;

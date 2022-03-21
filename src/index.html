@@ -36,9 +36,11 @@
       <label class="list__label">
         <input class="list__checkbox" type="checkbox">
         <span class="list__checkmark"></span>
-        <span class="list__description">${todo.value}</span>
+        <span class="list__description list__description--view">${todo.value}</span>
+        <input class="list__description list__description--edit" type="text" value="${todo.value}">
       </label>
-      <button class="list__delete">❌</button>
+      <button class="list__button list__button--edit">✏️</button>
+      <button class="list__button list__button--delete">❌</button>
     </li>
   </template>
 
