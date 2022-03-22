@@ -1,4 +1,29 @@
-footer {
+.footer {
   color: $color-muted;
   text-align: center;
+  margin-top: 64px;
+
+  &__nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding-left: 0;
+
+    border-top: 1px solid $color-grey;
+    border-bottom: 1px solid $color-grey;
+    margin: 16px 0;
+    padding: 16px 0;
+  }
+
+  &__nav-item {
+
+  }
+
+  &__nav-link {
+    display: block;
+    text-decoration: none;
+    padding: 8px;
+    color: $color-muted;
+  }
 }
