@@ -99,8 +99,12 @@ export default class TodoApp {
 
       // Delete Todos
       if (event.target.matches('.list__button--delete')) {
-        this.todoService.delete(selectedID);
-        this.render();
+        $elementTodoItem.classList.add('list__item--delete');
+        $elementTodoItem.addEventListener('animationend', () => {
+          $elementTodoItem.remove();
+          this.todoService.delete(selectedID);
+          this.render();
+        });
       }
     });
   }
