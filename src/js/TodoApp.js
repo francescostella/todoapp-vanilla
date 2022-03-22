@@ -60,7 +60,7 @@ export default class TodoApp {
         return false;
       }
       // Set input text field background color
-      event.target.style.background = 'ivory';
+      event.target.style.background = '#FFFFC2';
     }, true);
 
     document.addEventListener('blur', event => {
@@ -88,7 +88,7 @@ export default class TodoApp {
       }
 
       const $elementTodoItem = event.target.closest('.list__item');
-      const selectedID = $elementTodoItem.getAttribute('data-todo-id');
+      const selectedID = parseInt($elementTodoItem.getAttribute('data-todo-id'));
       const todo = this.todoService.getTodoByID(selectedID);
 
       // Toggle completed state on each Todo
@@ -97,15 +97,23 @@ export default class TodoApp {
         this.render();
       }
 
-      // Delete Todos
-      if (event.target.matches('.list__button--delete')) {
-        this.todoService.delete(selectedID);
+      // Fav Todos
+      if (event.target.matches('.list__button--fav')) {
+        $elementTodoItem.classList.toggle('list__item--fav');
+        todo.toggleFavorite();
+        this.todoService.moveToTop(selectedID)
         this.render();
       }
 
       // Edit Todos
       if (event.target.matches('.list__button--edit')) {
-        $elementTodoItem.classList.toggle('list__item--edit')
+        $elementTodoItem.classList.toggle('list__item--edit');
+      }
+
+      // Delete Todos
+      if (event.target.matches('.list__button--delete')) {
+        this.todoService.delete(selectedID);
+        this.render();
       }
     });
   }

@@ -42,6 +42,18 @@ export default class TodoService {
     return this.todos.length === 0;
   }
 
+  moveToTop(id) {
+    console.log(`🚀 ~ TodoService ~ moveToTop ~ id`, id)
+    const index = this.todos.findIndex(todo => todo.id === id);
+    console.log(`🚀 ~ TodoService ~ moveToTop ~ index`, index)
+
+    if (index >= 0) {
+      const removeTodo = this.todos.splice(index, 1);
+      console.log(`🚀 ~ TodoService ~ moveToTop ~ removeTodo`, removeTodo)
+      this.todos.unshift(...removeTodo);
+    }
+  }
+
   getCountTodos() {
     const todos = {
       active: 0,
@@ -56,7 +68,7 @@ export default class TodoService {
         todos.active++;
       }
 
-      todo.total++;
+      todos.total++;
     });
 
     return todos;

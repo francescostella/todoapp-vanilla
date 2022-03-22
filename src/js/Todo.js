@@ -3,10 +3,15 @@ export default class Todo {
     this.id = id
     this.value = value.trim();
     this.completed = false;
+    this.favorite = false;
   }
 
   toggleCompleted() {
     this.completed = !this.completed;
+  }
+  
+  toggleFavorite() {
+    this.favorite = !this.favorite;
   }
 
   setCompleted(value) {

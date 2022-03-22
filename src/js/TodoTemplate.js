@@ -9,6 +9,12 @@ export default function TodoTemplate(todo) {
     $todoItem.querySelector('.list__checkbox').removeAttribute('checked')
   }
 
+  if (todo.favorite) {
+    $todoItem.querySelector('.list__item').classList.add('list__item--fav');
+  } else {
+    $todoItem.querySelector('.list__item').classList.remove('list__item--fav');
+  }
+
   $todoItem.querySelector('.list__description--view').textContent = todo.value;
   $todoItem.querySelector('.list__description--edit').value = todo.value;
   $todoItem.querySelector('.list__item').setAttribute('data-todo-id', todo.id);

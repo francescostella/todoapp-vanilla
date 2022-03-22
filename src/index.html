@@ -40,8 +40,12 @@
         <span class="list__description list__description--view">${todo.value}</span>
         <input class="list__description list__description--edit" type="text" value="${todo.value}">
       </label>
-      <button class="list__button list__button--edit">✏️</button>
       <button class="list__button list__button--delete">❌</button>
+      <button class="list__button list__button--edit">✏️</button>
+      <button class="list__button list__button--fav">
+        <span class="list__star list__star--empty">☆</span>
+        <span class="list__star list__star--filled">★</span>
+      </button>
     </li>
   </template>
 

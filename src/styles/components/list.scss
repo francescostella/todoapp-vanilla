@@ -25,11 +25,15 @@
     }
 
     &:hover .list__checkbox ~ .list__checkmark {
-      background-color: #eee;
+      background-color: aliceblue;
     }
 
     &--completed {
       color: $color-muted;
+    }
+
+    &--fav {
+      //
     }
 
     .list__checkbox:checked ~ .list__checkmark {
@@ -103,7 +107,7 @@
       width: 100%;
       font-size: 16px;
       padding: 0 16px;
-      box-shadow: inset 0 0 8px rgba($color-black, .1);
+      background-color: ivory;
     }
 
     .list__item--edit & {
@@ -127,7 +131,45 @@
     border-radius: 3px;
 
     &:hover {
-      background: $color-hover;
+      background: aliceblue;
+    }
+
+    &--fav {
+      font-size: 20px;
+
+      .list__item--fav & {
+        display: block;
+      }
+    }
+
+    &--edit {
+      //
+    }
+
+    &--delete {
+      //
+    }
+  }
+
+  &__star {
+    pointer-events: none;
+
+    &--empty {
+      display: block;
+
+      .list__item--fav & {
+        display: none;
+      }
+    }
+
+    &--filled {
+      display: none;
+      color: gold;
+      text-shadow: 0 0 1px gray;
+
+      .list__item--fav & {
+        display: block;
+      }
     }
   }
 }
