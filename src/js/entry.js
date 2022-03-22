@@ -1,4 +1,9 @@
 import TodoApp from './TodoApp';
 
-const todoapp = new TodoApp();
-todoapp.init();
+const sampleTodos = [
+  'Clean the batcave',
+  'Pick up cape from drycleaning',
+  'Clean Daily Planet desk',
+];
+
+const todoapp = new TodoApp(document, sampleTodos);

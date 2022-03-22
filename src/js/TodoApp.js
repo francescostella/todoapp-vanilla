@@ -2,35 +2,22 @@ import TodoService from './TodoService';
 import TodoTemplate from './TodoTemplate';
 
 export default class TodoApp {
-  constructor() {}
+  constructor(element, todos) {
+    this.todoService = new TodoService(todos);
+    this.initialize(element);
+  }
 
-  init() {
+  initialize(element) {
     // Get HTML element references
-    this.todoService = new TodoService();
-    this.$todoList = document.querySelector('.list');
-    this.$newTodoInput = document.querySelector('.add-form__input');
-    this.$addForm = document.querySelector('.add-form');
-    this.$buttonClear = document.querySelector('.add-form__button--clear');
-    this.$infoLeft = document.querySelector('.info__left');
-
-    // Dev
-    this.setupSample();
+    this.$todoList = element.querySelector('.list');
+    this.$newTodoInput = element.querySelector('.add-form__input');
+    this.$addForm = element.querySelector('.add-form');
+    this.$buttonClear = element.querySelector('.add-form__button--clear');
+    this.$infoLeft = element.querySelector('.info__left');
 
     // Initialization sequence
     this.render();
     this.bind();
-  }
-
-  setupSample() {
-    const samples = [
-      'Clean the batcave',
-      'Pick up cape from drycleaning',
-      'Clean Daily Planet desk',
-    ];
-
-    samples.forEach(item => {
-      this.todoService.add(item);
-    });
   }
 
   bind() {
@@ -131,7 +118,7 @@ export default class TodoApp {
 
     this.$todoList.innerHTML = '';
 
-    this.todoService.todos.forEach(todo => {
+    this.todoService._todos.forEach(todo => {
       this.$todoList.appendChild(TodoTemplate(todo));
     });
   }

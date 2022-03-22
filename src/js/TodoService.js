@@ -6,19 +6,23 @@ function generateTodoID() {
   return _lastId += 1;
 }
 export default class TodoService {
-  constructor() {
-    this.todos = [];
+  _todos = [];
+
+  constructor(todos) {
+    if (todos) {
+      todos.forEach(todo => this.add(todo));
+    }
   }
 
   add(value) {
     let newTodo = new Todo(generateTodoID(), value)
-    this.todos.push(newTodo);
+    this._todos.push(newTodo);
   }
 
   delete(id) {
     let todoToRemove;
 
-    this.todos = this.todos.filter(todo => {
+    this._todos = this._todos.filter(todo => {
       if (todo.id !== parseInt(id)) {
         todoToRemove = todo;
         return true;
@@ -31,23 +35,23 @@ export default class TodoService {
   }
 
   getTodoByID(id) {
-    return this.todos.find(todo => todo.id === parseInt(id));
+    return this._todos.find(todo => todo.id === parseInt(id));
   }
 
   clearCompleted() {
-    this.todos = this.todos.filter(todo => !todo.completed);
+    this._todos = this._todos.filter(todo => !todo.completed);
   }
 
   isEmpty() {
-    return this.todos.length === 0;
+    return this._todos.length === 0;
   }
 
   moveToTop(id) {
-    const index = this.todos.findIndex(todo => todo.id === id);
+    const index = this._todos.findIndex(todo => todo.id === id);
 
     if (index >= 0) {
-      const removeTodo = this.todos.splice(index, 1);
-      this.todos.unshift(...removeTodo);
+      const removeTodo = this._todos.splice(index, 1);
+      this._todos.unshift(...removeTodo);
     }
   }
 
@@ -58,7 +62,7 @@ export default class TodoService {
       total: 0,
     };
 
-    this.todos.forEach(todo => {
+    this._todos.forEach(todo => {
       if (todo.completed) {
         todos.completed++;
       } else {
