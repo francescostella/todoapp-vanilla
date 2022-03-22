@@ -43,13 +43,10 @@ export default class TodoService {
   }
 
   moveToTop(id) {
-    console.log(`🚀 ~ TodoService ~ moveToTop ~ id`, id)
     const index = this.todos.findIndex(todo => todo.id === id);
-    console.log(`🚀 ~ TodoService ~ moveToTop ~ index`, index)
 
     if (index >= 0) {
       const removeTodo = this.todos.splice(index, 1);
-      console.log(`🚀 ~ TodoService ~ moveToTop ~ removeTodo`, removeTodo)
       this.todos.unshift(...removeTodo);
     }
   }
