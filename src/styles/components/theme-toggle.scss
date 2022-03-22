@@ -1,0 +1,46 @@
+.theme-toggle {
+  position: absolute;
+  top: 32px;
+  right: 32px;
+
+  &__button {
+    width: 40px;
+    height: 32px;
+
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    text-align: left;
+    font: inherit;
+  }
+
+  &__icon {
+    display: block;
+    width: 18px;
+    height: 18px;
+    content: '';
+    background-position: center;
+    background-size: cover;
+
+    &--light {
+      display: none;
+      
+      .dark-theme & {
+        display: block;
+      }
+    }
+  
+    &--dark {
+      .dark-theme & {
+        display: none;
+      }
+    }
+  }
+}

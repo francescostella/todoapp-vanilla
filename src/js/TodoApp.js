@@ -14,13 +14,23 @@ export default class TodoApp {
     this.$addForm = element.querySelector('.add-form');
     this.$buttonClear = element.querySelector('.add-form__button--clear');
     this.$infoLeft = element.querySelector('.info__left');
+    this.$themeToggle = element.querySelector('.theme-toggle__button');
 
     // Initialization sequence
+    this.detectThemeColor();
     this.render();
     this.bind();
   }
 
   bind() {
+    this.$themeToggle.addEventListener('click', event => {
+      if (document.documentElement.classList.contains('dark-theme')) {
+        document.documentElement.classList.remove('dark-theme');
+      } else {
+        document.documentElement.classList.add('dark-theme');
+      }
+    });
+
     // Bind `submit` for the AddForm input field
     this.$addForm.addEventListener('submit', event => {
       event.preventDefault();
@@ -47,7 +57,7 @@ export default class TodoApp {
         return false;
       }
       // Set input text field background color
-      event.target.style.background = '#FFFFC2';
+      event.target.style.background = 'var(--color-surface)';
     }, true);
 
     document.addEventListener('blur', event => {
@@ -130,5 +140,15 @@ export default class TodoApp {
   renderInfo() {
     const activeTodos = this.todoService.getCountTodos().active;
     this.$infoLeft.textContent = `${activeTodos} left${activeTodos > 1 ? `s` : ``}`; 
+  }
+
+  detectThemeColor() {
+    const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+    if (prefersDarkScheme.matches) {
+      document.documentElement.classList.add('dark-theme');
+    } else {
+      document.documentElement.classList.remove('dark-theme');
+    }
   }
 }

@@ -18,7 +18,10 @@
     font-size: 16px;
     line-height: 1.5;
     padding: 8px 16px;
-    border: 1px solid $color-grey;
+    border: 1px solid var(--color-surface);
+
+    background-color: var(--color-surface);
+    color: var(--color-on-surface);
 
     appearance: none;
 
@@ -34,11 +37,11 @@
     cursor: pointer;
     
     &--add {
-      background-color: #0d6efd;
-      color: $color-white;
+      background-color: var(--color-primary);
+      color: var(--color-on-primary);
 
       &:hover {
-        background-color: darken(#0d6efd, 10%);
+        background-color: var(--color-primary-variant);
       }
     }
 
@@ -47,11 +50,11 @@
       border-left-width: 0;
       border-top-right-radius: 3px;
       border-bottom-right-radius: 3px;
-      background-color: $color-white;
+      background-color: var(--color-background);
       color: gray;
 
       &:hover {
-        color: $color-white;
+        color: var(--color-on-background);
         background-color: slategray;
       }
     }
