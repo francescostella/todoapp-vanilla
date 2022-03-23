@@ -16,7 +16,7 @@ export default class TodoService {
 
   add(value) {
     let newTodo = new Todo(generateTodoID(), value)
-    this._todos.push(newTodo);
+    this._todos.unshift(newTodo);
   }
 
   delete(id) {
