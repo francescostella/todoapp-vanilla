@@ -1,9 +1,10 @@
 .header {
+  position: relative;
   text-align: center;
   background-color: var(--color-surface);
   color: var(--color-on-surface);
   padding: 48px 24px;
-  margin-top: 48px;
+  margin-top: 32px;
   border-radius: 4px;
 
   &__title {

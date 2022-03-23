@@ -1,7 +1,7 @@
 .theme-toggle {
   position: absolute;
-  top: 32px;
-  right: 32px;
+  top: 8px;
+  right: 16px;
 
   &__button {
     width: 40px;
@@ -23,8 +23,9 @@
 
   &__icon {
     display: block;
-    width: 18px;
-    height: 18px;
+    width: 32px;
+    height: 32px;
+    font-size: 32px;
     content: '';
     background-position: center;
     background-size: cover;
