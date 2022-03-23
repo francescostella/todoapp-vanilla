@@ -1,9 +1,7 @@
 .add-form {
   position: relative;
   display: flex;
-  // flex-wrap: wrap;
-  // align-items: stretch;
-  // width: 100%;
+  flex-wrap: wrap;
 
   margin: 8px 0;
   padding: 8px 0;
@@ -14,6 +12,11 @@
     flex: 1 1 auto;
     width: 1%;
     min-width: 0;
+
+    @media (max-width: 480px) {
+      border: 1px solid var(--color-outline);
+      flex-basis: 100%;
+    }
 
     font-size: 16px;
     line-height: 1.5;
@@ -48,6 +51,10 @@
         color: var(--color-primary);
         border-color: var(--color-onprimary);
       }
+
+      @media (max-width: 480px) {
+        flex-basis: 50%;
+      }
     }
 
     &--clear {
@@ -60,6 +67,10 @@
       &:hover {
         background-color: var(--color-on-primary);
         color: var(--color-primary);
+      }
+
+      @media (max-width: 480px) {
+        flex-basis: 50%;
       }
     }
   }

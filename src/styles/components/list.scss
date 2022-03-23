@@ -1,4 +1,5 @@
 .list {
+  $items-vertical-spacing: 16px;
   margin: 0;
   padding: 0;
 
@@ -10,7 +11,7 @@
   &__item {
     display: flex;
     align-items: center;
-    padding: 8px 16px;
+    padding: $items-vertical-spacing;
     background-color: var(--color-surface-variant);
     border: 1px solid var(--color-surface-variant);
     border-bottom-width: 0;
@@ -56,7 +57,7 @@
     display: flex;
     align-items: center;
     width: 100%;
-    padding: 8px 0;
+    padding: 0;
     cursor: pointer;
 
     .list__item--completed & {
@@ -70,9 +71,6 @@
     cursor: pointer;
     height: 0;
     width: 0;
-
-    width: 32px;
-    height: 32px;
     margin: 0;
   }
 
@@ -80,6 +78,8 @@
     position: relative;
     height: 25px;
     width: 25px;
+    min-width: 25px;
+    min-height: 25px;
     margin-right: 8px;
     border-radius: 3px;
     border: 1px solid var(--color-on-background);
@@ -133,6 +133,14 @@
 
   }
 
+  &__buttons {
+    display: flex;
+    position: absolute;
+
+    top: $items-vertical-spacing;
+    right: 16px;
+  }
+
   &__button {
     display: none;
     background: none;
@@ -140,6 +148,7 @@
     cursor: pointer;
     font-size: 16px;
     border-radius: 3px;
+    background-color: var(--color-surface-variant);
     color: var(--color-on-surface);
 
     &:hover {
