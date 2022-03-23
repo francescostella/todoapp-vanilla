@@ -50,23 +50,10 @@ export default class TodoApp {
       this.render();
     });
 
-    // Bind `focus` and `blur` events for each
-    // Todo item edit input text field
-    document.addEventListener('focus', event => {
-      if (!event.target.matches('.list__description--edit')) {
-        return false;
-      }
-      // Set input text field background color
-      event.target.style.background = 'var(--color-surface)';
-    }, true);
-
     document.addEventListener('blur', event => {
       if (!event.target.matches('.list__description--edit')) {
         return false;
       }
-
-      // Remove input text field background color
-      event.target.style.background = '';
 
       const $elementTodoItem = event.target.closest('.list__item');
       const selectedID = $elementTodoItem.getAttribute('data-todo-id');
