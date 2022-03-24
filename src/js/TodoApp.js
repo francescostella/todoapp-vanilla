@@ -62,11 +62,24 @@ export default class TodoApp {
       this.render();
     }, true);
 
+    document.addEventListener('keydown', event => {
+      if (!event.target.matches('.list__description--edit')) {
+        return false;
+      }
+
+      if (event.code === 'Escape' || event.code === 'Enter') {
+        const $elementTodoItem = event.target.closest('.list__item');
+        $elementTodoItem.classList.toggle('list__item--edit');
+        $elementTodoItem.querySelector('.list__description--edit').blur();
+      }
+    }, true);
+
     // Bind `click` event for Todo item
     this.$todoList.addEventListener('click', event => {
       if (
         !event.target.matches('.list__checkbox') &&
-        !event.target.matches('.list__button')
+        !event.target.matches('.list__button') &&
+        !event.target.matches('.list__info')
       ) {
         return false;
       }
@@ -83,6 +96,7 @@ export default class TodoApp {
 
       // Fav Todos
       if (event.target.matches('.list__button--fav')) {
+        $elementTodoItem.classList.remove('list__item--show');
         $elementTodoItem.classList.toggle('list__item--fav');
         todo.toggleFavorite();
         this.todoService.moveToTop(selectedID)
@@ -91,17 +105,24 @@ export default class TodoApp {
 
       // Edit Todos
       if (event.target.matches('.list__button--edit')) {
+        $elementTodoItem.classList.remove('list__item--show');
         $elementTodoItem.classList.toggle('list__item--edit');
       }
 
       // Delete Todos
       if (event.target.matches('.list__button--delete')) {
+        $elementTodoItem.classList.remove('list__item--show');
         $elementTodoItem.classList.add('list__item--delete');
         $elementTodoItem.addEventListener('animationend', () => {
           $elementTodoItem.remove();
           this.todoService.delete(selectedID);
           this.render();
         });
+      }
+
+      // Show buttons if clicked on info button
+      if (event.target.matches('.list__info')) {
+        $elementTodoItem.classList.add('list__item--show');
       }
     });
   }

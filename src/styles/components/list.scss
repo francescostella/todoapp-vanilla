@@ -27,7 +27,7 @@
     position: relative;
     user-select: none;
 
-    &:hover .list__button {
+    &.list__item--show .list__button {
       display: block;
     }
 
@@ -80,7 +80,7 @@
     width: 25px;
     min-width: 25px;
     min-height: 25px;
-    margin-right: 8px;
+    margin-right: 16px;
     border-radius: 3px;
     border: 1px solid var(--color-on-background);
 
@@ -102,7 +102,7 @@
   }
 
   &__description {
-    line-height: 32px;
+    line-height: 1.2;
     
     &--edit {
       display: none;
@@ -133,12 +133,26 @@
 
   }
 
+  &__info {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    
+    // For iOS
+    padding: 0 8px; 
+    
+    border-radius: 3px;
+    background-color: var(--color-surface-variant);
+    color: var(--color-on-surface);
+
+    &:hover {
+      // background: var(--color-tertiary-container);
+    }
+  }
+
   &__buttons {
     display: flex;
-    position: absolute;
-
-    top: $items-vertical-spacing;
-    right: 16px;
   }
 
   &__button {
@@ -147,6 +161,10 @@
     border: none;
     cursor: pointer;
     font-size: 16px;
+
+    // For iOS
+    padding: 0 8px; 
+
     border-radius: 3px;
     background-color: var(--color-surface-variant);
     color: var(--color-on-surface);
