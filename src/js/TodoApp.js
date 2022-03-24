@@ -122,7 +122,7 @@ export default class TodoApp {
 
       // Show buttons if clicked on info button
       if (event.target.matches('.list__info')) {
-        $elementTodoItem.classList.add('list__item--show');
+        $elementTodoItem.classList.toggle('list__item--show');
       }
     });
   }
