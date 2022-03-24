@@ -23,6 +23,7 @@ export default class TodoApp {
   }
 
   bind() {
+    // Listeners to handle theme changes
     this.$themeToggle.addEventListener('click', event => {
       if (document.documentElement.classList.contains('dark-theme')) {
         document.documentElement.classList.remove('dark-theme');
@@ -50,6 +51,7 @@ export default class TodoApp {
       this.render();
     });
 
+    // `blur` event to handle the store and rendering of edited Todos
     document.addEventListener('blur', event => {
       if (!event.target.matches('.list__description--edit')) {
         return false;
@@ -62,6 +64,7 @@ export default class TodoApp {
       this.render();
     }, true);
 
+    // Handle ESCAPE and ENTER keys when editing a Todo
     document.addEventListener('keydown', event => {
       if (!event.target.matches('.list__description--edit')) {
         return false;
