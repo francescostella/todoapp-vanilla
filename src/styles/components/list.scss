@@ -174,7 +174,10 @@
     }
 
     &--fav {
-      font-size: 20px;
+      // Keep it under 20px otherwise parent element
+      // will shift height when children 
+      // visibility will be toggled
+      font-size: 18px;
 
       .list__item--fav & {
         display: block;
