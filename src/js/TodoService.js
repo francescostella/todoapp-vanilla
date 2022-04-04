@@ -24,9 +24,7 @@ export default class TodoService {
    * @param {Todo[]} todos - List of todos
    */
   constructor(todos) {
-    if (todos) {
-      todos.forEach(todo => this.add(todo));
-    }
+    if (todos) todos.forEach(todo => this.add(todo));
   }
 
   /**
