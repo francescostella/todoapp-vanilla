@@ -40,10 +40,13 @@ export default class TodoService {
   /**
    * Add a todo
    * @param {string} value - will be used as value of the new Todo
+   * @returns {Todo} todo - the newly added todo
    */
   add(value) {
     let newTodo = new Todo(generateTodoID(), value)
     this._todos.unshift(newTodo);
+
+    return newTodo;
   }
 
   /**
