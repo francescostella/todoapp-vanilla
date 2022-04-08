@@ -154,7 +154,7 @@ export default class TodoApp {
   }
 
   detectThemeColor() {
-    const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
 
     if (prefersDarkScheme.matches) {
       document.documentElement.classList.add('dark-theme');
