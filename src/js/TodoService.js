@@ -77,6 +77,14 @@ export default class TodoService {
   }
 
   /**
+   * Get all todos
+   * @returns {Todos[]} return all the todos
+   */
+  getAll() {
+    return this._todos;
+  }
+
+  /**
    * Get the count of the different todos states.
    * @returns {{
    *  active: number,

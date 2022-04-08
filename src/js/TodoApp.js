@@ -1,5 +1,5 @@
 import TodoService from './TodoService';
-import TodoTemplate from './TodoTemplate';
+import TodoListComponent from './TodoListComponent';
 
 export default class TodoApp {
   constructor(element, todos) {
@@ -15,6 +15,9 @@ export default class TodoApp {
     this.$buttonClear = element.querySelector('.add-form__button--clear');
     this.$infoLeft = element.querySelector('.info__left');
     this.$themeToggle = element.querySelector('.theme-toggle__button');
+
+    // Initialize components
+    this.todoList = new TodoListComponent(element, this.todoService)
 
     // Initialization sequence
     this.detectThemeColor();
@@ -77,56 +80,9 @@ export default class TodoApp {
       }
     }, true);
 
-    // Bind `click` event for Todo item
-    this.$todoList.addEventListener('click', event => {
-      if (
-        !event.target.matches('.list__checkbox') &&
-        !event.target.matches('.list__button') &&
-        !event.target.matches('.list__info')
-      ) {
-        return false;
-      }
-
-      const $elementTodoItem = event.target.closest('.list__item');
-      const selectedID = parseInt($elementTodoItem.getAttribute('data-todo-id'));
-      const todo = this.todoService.getTodoByID(selectedID);
-
-      // Toggle completed state on each Todo
-      if (event.target.matches('.list__checkbox')) {
-        todo.toggleCompleted();
-        this.render();
-      }
-
-      // Fav Todos
-      if (event.target.matches('.list__button--fav')) {
-        $elementTodoItem.classList.remove('list__item--show');
-        $elementTodoItem.classList.toggle('list__item--fav');
-        todo.toggleFavorite();
-        this.todoService.moveToTop(selectedID)
-        this.render();
-      }
-
-      // Edit Todos
-      if (event.target.matches('.list__button--edit')) {
-        $elementTodoItem.classList.remove('list__item--show');
-        $elementTodoItem.classList.toggle('list__item--edit');
-      }
-
-      // Delete Todos
-      if (event.target.matches('.list__button--delete')) {
-        $elementTodoItem.classList.remove('list__item--show');
-        $elementTodoItem.classList.add('list__item--delete');
-        $elementTodoItem.addEventListener('animationend', () => {
-          $elementTodoItem.remove();
-          this.todoService.delete(selectedID);
-          this.render();
-        });
-      }
-
-      // Show buttons if clicked on info button
-      if (event.target.matches('.list__info')) {
-        $elementTodoItem.classList.toggle('list__item--show');
-      }
+    // Listen for TodoListComponent render event
+    this.$todoList.addEventListener('todolist-render', event => {
+      this.render();
     });
   }
 
@@ -136,16 +92,8 @@ export default class TodoApp {
   }
 
   renderTodos() {
-    if (this.todoService.isEmpty()) {
-      this.$todoList.innerHTML = '<p class="list__empty">No todos.</p>';
-      return;
-    }
-
-    this.$todoList.innerHTML = '';
-
-    this.todoService._todos.forEach(todo => {
-      this.$todoList.appendChild(TodoTemplate(todo));
-    });
+    const todos = this.todoService.getAll();
+    this.todoList.render(todos);
   }
 
   renderInfo() {
