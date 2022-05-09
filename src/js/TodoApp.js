@@ -28,11 +28,7 @@ export default class TodoApp {
   bind() {
     // Listeners to handle theme changes
     this.$themeToggle.addEventListener('click', event => {
-      if (document.documentElement.classList.contains('dark-theme')) {
-        document.documentElement.classList.remove('dark-theme');
-      } else {
-        document.documentElement.classList.add('dark-theme');
-      }
+      document.documentElement.classList.toggle('dark-theme');
     });
 
     // Bind `submit` for the AddForm input field
